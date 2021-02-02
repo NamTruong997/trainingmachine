@@ -1,0 +1,71 @@
+@import "assets/styles/variable.scss";
+@import "assets/styles/mixin.scss";
+
+.sreen {
+  width: 700px;
+  font-weight: 900;
+  font-size: 2rem;
+  background-color: $color-screen;
+  padding: 1rem;
+  margin: 2rem 0;
+  border-radius: 0.4rem;
+  user-select: none;
+
+  @include mobile {
+    width: 95%;
+    font-size: 1rem;
+  }
+
+  //   Header
+  &__header {
+    display: flex;
+  }
+
+  &__header--ch {
+    width: 30%;
+  }
+
+  &__header--status {
+    width: 70%;
+    text-align: center;
+  }
+
+  //   Body
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+  }
+
+  &__body--left {
+    width: 30%;
+    padding-left: 1rem;
+  }
+
+  &__body--mid {
+    width: 50%;
+    font-size: 2rem;
+  }
+
+  &__body--right {
+    width: 20%;
+    text-align: right;
+  }
+
+  //   Footer
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__footer--mode {
+    width: 70%;
+    span {
+      margin-right: 0.25rem;
+      color: #f2f2f2;
+      background-color: black;
+      padding: 3px;
+      border-radius: 0.4rem;
+    }
+  }
+}

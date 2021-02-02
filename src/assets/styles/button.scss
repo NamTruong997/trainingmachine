@@ -1,0 +1,60 @@
+@import "./variable.scss";
+@import "./mixin.scss";
+
+//Input Checkbox
+input[type="radio"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+
+  &:checked + label {
+    &:after {
+      transform: scale($bg-size-end);
+      mix-blend-mode: difference;
+      //Gradient start values are somewhat arbitrary. But this seemed a good fit to avoid overly-blurry circle edge.
+      background: radial-gradient(circle at center, $color-light 30%, $color-dark 100%);
+    }
+  }
+}
+
+label {
+  outline: none;
+  user-select: none;
+  color: $color-white;
+  font-size: 1.5rem;
+  width: 6rem;
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  letter-spacing: 0.04rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.4rem;
+  background: $color-dark;
+  position: relative;
+  overflow: hidden;
+
+  @include mobile {
+    width: 4rem;
+    height: 2.75rem;
+    font-size: 1rem;
+    line-height: 2.75rem;
+    margin-right: 0.2rem;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: scale(0);
+    transition: transform $dur ease-in-out;
+  }
+
+  &:active {
+    top: 3px;
+    box-shadow: none;
+  }
+}

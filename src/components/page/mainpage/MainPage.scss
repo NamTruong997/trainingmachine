@@ -1,0 +1,64 @@
+@import "assets/styles/variable.scss";
+@import "assets/styles/mixin.scss";
+
+.mainpage {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  margin: auto;
+  background-color: $color-bg;
+  color: $color-white;
+  padding-top: 3rem;
+  max-width: 1280px;
+
+  &__left {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    @include mobile {
+      width: 15%;
+    }
+    label {
+      margin-bottom: 0.5rem;
+      @include mobile {
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
+  // Center
+  &__mid {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h2 {
+      font-weight: 400;
+      font-size: 3rem;
+      @include mobile {
+        font-size: 1.5rem;
+      }
+    }
+    @include mobile {
+      width: 70%;
+    }
+  }
+  &__direct {
+    display: flex;
+  }
+  &__right {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @include mobile {
+      width: 15%;
+    }
+    label {
+      margin-bottom: 0.5rem;
+      @include mobile {
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
+}

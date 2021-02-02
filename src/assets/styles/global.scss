@@ -9,6 +9,7 @@ html,
 body {
   font-size: 13px;
   overflow: hidden;
+  background-color: $color-bg;
   @include tablet {
     font-size: 15px;
   }

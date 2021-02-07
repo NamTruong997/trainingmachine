@@ -28,12 +28,11 @@ label {
   text-align: center;
   letter-spacing: 0.04rem;
   margin-right: 0.5rem;
-  cursor: pointer;
   border-radius: 0.4rem;
   background: $color-dark;
   position: relative;
   overflow: hidden;
-
+  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;
   @include mobile {
     width: 4rem;
     height: 2.75rem;

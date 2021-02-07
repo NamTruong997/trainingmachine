@@ -7,7 +7,7 @@ import Sreen, { ScreenDataType } from "../screen/Sreen";
 import "./MainPage.scss";
 const CHANEL_COUNT = 23;
 const MODEL_COUNT = 3;
-const STEPS = ["chanel", "rxLeft", "rxRight1", "rxRight2", "rxRight3", "rxRight4", "wri", "txLeft", "txRight", "wri"];
+const STEPS = ["chanel", "rxLeft", "rxRight1", "rxRight2", "rxRight3", "rxRight4", "txLeft", "txRight1", "txRight2", "txRight3", "txRight4"];
 const Swal = require("sweetalert2");
 
 let chanelDef = localStorage.getItem("chanel") || "0";
@@ -58,6 +58,10 @@ const SignInPage = () => {
         setStep(2);
         return;
       }
+      if (wri === 1 && step === 11) {
+        setStep(7);
+        return;
+      }
       setStep(step + 1);
     }
   };
@@ -98,8 +102,7 @@ const SignInPage = () => {
     
   };
   const onMode = () => {
-    // console.log(`pre: ${pre}`);
-    // console.log(`step: ${step}`);
+
     if (step !== 0) {
       if (!pre && step === 100) {
         if (data?.mode === MODEL_COUNT) {
@@ -145,13 +148,13 @@ const SignInPage = () => {
       }
     } else {
       let stepName = STEPS[step - 1];
+      console.log(stepName);
       let range = getRange(stepName);
       let obj: any = data;
       let newData: ScreenDataType = { ...data!, ...{ [stepName]: getNumber(range.min, range.max, true, obj[stepName]) } };
       setData(newData);
     }
   };
-
   const onWri = () => {
     if (pre) {
       if (wri === 0) {

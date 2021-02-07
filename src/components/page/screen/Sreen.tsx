@@ -48,7 +48,7 @@ const Sreen: React.FC<ScreenProps> = (props) => {
         <div className="sreen__body--left">
           <span>{wri !== 1 ? "RX" : "TX"}</span>
         </div>
-        {wri === 0 ? (
+        {wri === 0 || wri === 2 ? (
           <div className="sreen__body--mid">
             <span className={classNames("sreen__body--big", { flicker: step === 2 })}>{data.rxLeft}</span>.
             <span className={classNames("sreen__body--big", { flicker: step === 3 })}>{data.rxRight1}</span>

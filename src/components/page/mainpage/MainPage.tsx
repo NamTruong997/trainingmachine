@@ -13,7 +13,7 @@ const Swal = require("sweetalert2");
 let chanelDef = localStorage.getItem("chanel") || "0";
 
 const SignInPage = () => {
-  const [active, setActive] = useState<boolean>(true);
+  const [active, setActive] = useState<boolean>(false);
   const [done, setDone] = useState<number>(-1);
   const [step, setStep] = useState<number>(0);
   const [wri, setWri] = useState<number>(0);
@@ -122,11 +122,16 @@ const SignInPage = () => {
       // View mode
       if (chanel === 0) {
         setChanel(CHANEL_COUNT);
-        getDataByChanel(CHANEL_COUNT);
+        if (!pre){
+          getDataByChanel(CHANEL_COUNT);
+        }
       } else {
         setChanel(chanel - 1);
-        getDataByChanel(chanel - 1);
+        if (!pre){
+          getDataByChanel(chanel - 1);
+        }
       }
+     
     } else {
       let stepName = STEPS[step - 1];
       let range = getRange(stepName);
@@ -141,20 +146,24 @@ const SignInPage = () => {
       // View mode
       if (chanel === CHANEL_COUNT) {
         setChanel(0);
-        getDataByChanel(0);
+        if (!pre){
+          getDataByChanel(0);
+        }
       } else {
         setChanel(chanel + 1);
-        getDataByChanel(chanel + 1);
+        if (!pre){
+          getDataByChanel(chanel + 1);
+        }
       }
     } else {
       let stepName = STEPS[step - 1];
-      console.log(stepName);
       let range = getRange(stepName);
       let obj: any = data;
       let newData: ScreenDataType = { ...data!, ...{ [stepName]: getNumber(range.min, range.max, true, obj[stepName]) } };
       setData(newData);
     }
   };
+
   const onWri = () => {
     if (pre) {
       if (wri === 0) {

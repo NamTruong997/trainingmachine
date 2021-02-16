@@ -40,7 +40,7 @@ const Sreen: React.FC<ScreenProps> = (props) => {
         <div className="sreen__header--status">
 
           {done === -1 && <div className="sreen__header">FAIL</div>}
-          {done === 0 && <div className="sreen__header">TUNELING</div>}
+          {done === 0 && <div className="sreen__header">TUNING</div>}
           {done === 1 && <div className="sreen__header">OK</div>}
         </div>
       </section>

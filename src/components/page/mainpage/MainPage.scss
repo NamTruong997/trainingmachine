@@ -3,27 +3,34 @@
 
 .mainpage {
   display: flex;
-  align-items: center;
-  height: 100vh;
+  height: 700px;
+  width: 1200px;
   margin: auto;
-  background-color: $color-bg;
   color: $color-white;
-  padding-top: 3rem;
   max-width: 1280px;
-
-
+  background-image: url("~assets/images/3.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  @include mobile {
+    margin-top: 20vh;
+    width: 400px;
+    height: 220px;
+  }
   &__left {
     width: 20%;
+    height: 85%;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    @include mobile {
-      width: 15%;
-    }
+    align-items: center;
+    justify-content: space-around;
+
     label {
-      margin-bottom: 0.5rem;
-      @include mobile {
-        margin-bottom: 0.2rem;
+      height: 7rem;
+      width: 7rem;
+      margin-right: 2rem;
+      @include mobile{
+        height: 6rem;
+        margin-top: 2rem;
       }
     }
   }
@@ -41,24 +48,42 @@
       }
     }
     @include mobile {
-      width: 70%;
+      width: 63%;
     }
   }
   &__direct {
     display: flex;
+    width: 500px;
+    margin-left: 40px;
+    @include mobile {
+      width: 180px;
+      margin-left: 5px;
+      label{
+        height: 2.5rem;
+        margin-right: 0.4rem;
+      }
+    }
   }
   &__right {
+    height: 85%;
     width: 20%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    height: 500px;
+    margin-top: 150px;
     @include mobile {
       width: 15%;
+      margin-top: 49px;
+      height: fit-content;
     }
     label {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.05rem;
       @include mobile {
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.25rem;
+        margin-right: unset;
+        width: 3rem;
+        height: 2.35rem;
       }
     }
   }

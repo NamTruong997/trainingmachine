@@ -32,7 +32,8 @@ label {
   background: $color-dark;
   position: relative;
   overflow: hidden;
-  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;
+  cursor: pointer;
+  opacity: 0;
   @include mobile {
     width: 4rem;
     height: 2.75rem;

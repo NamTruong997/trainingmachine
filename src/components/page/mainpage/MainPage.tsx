@@ -97,7 +97,6 @@ const SignInPage = () => {
           setPre(false);
         }, 1000);
       }, 1000);
-      
     }
     
   };
@@ -201,7 +200,6 @@ const SignInPage = () => {
         </label>
       </section>
       <section className="mainpage__mid">
-        <h2>HF TRANSCEIVER VRU611</h2>
         {data  && <Sreen active={active} pre={pre}  chanel={chanel} step={step} wri={wri} data={data} done={done}/>}
 
         <div className="mainpage__direct">

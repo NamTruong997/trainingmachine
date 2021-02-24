@@ -1,17 +1,31 @@
 import { faArrowDown, faArrowRight, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import iconClose from "assets/images/icon-close.png";
+import { Modal } from "components/common/modal/Modal";
 import { isEmpty } from "lodash";
 import React, { useEffect, useState } from "react";
+import { hdsdText, policyText } from "untils/content";
 import { generateData, getNumber, getRange } from "untils/logic";
 import Sreen, { ScreenDataType } from "../screen/Sreen";
 import "./MainPage.scss";
+
 const CHANEL_COUNT = 23;
 const MODEL_COUNT = 3;
 const STEPS = ["chanel", "rxLeft", "rxRight1", "rxRight2", "rxRight3", "rxRight4", "txLeft", "txRight1", "txRight2", "txRight3", "txRight4"];
 const Swal = require("sweetalert2");
 
 let chanelDef = localStorage.getItem("chanel") || "0";
-
+export interface ModalDataType {
+  show: boolean;
+  text: {
+    title: string,
+    content: string
+  };
+}
+const defaultContent = {
+  title: "",
+  content: ""
+}
 const SignInPage = () => {
   const [active, setActive] = useState<boolean>(false);
   const [done, setDone] = useState<number>(-1);
@@ -20,6 +34,10 @@ const SignInPage = () => {
   const [chanel, setChanel] = useState(parseInt(chanelDef));
   const [pre, setPre] = useState<boolean>(false);
   const [data, setData] = useState<ScreenDataType>();
+  const [modal, setModal] = useState<ModalDataType>({
+    show: false,
+    text: defaultContent,
+  });
   // Input data
   useEffect(() => {
     let storedData = localStorage.getItem("chanels");
@@ -41,10 +59,9 @@ const SignInPage = () => {
   };
 
   const onPre = () => {
-
     if (!pre) {
       setPre(true);
-      setDone(-1)
+      setDone(-1);
 
       wri === 0 && setStep(1);
     } else {
@@ -81,12 +98,12 @@ const SignInPage = () => {
   };
 
   const onDone = () => {
-    if ( wri === 2) {
-      let storeData = JSON.parse(localStorage.getItem('chanels')!)
-      let newStore = {...storeData, ...{[chanel]: data}}
-      localStorage.setItem('chanels', JSON.stringify(newStore));
-      localStorage.setItem('chanel', chanel.toString());
-      setDone(0)
+    if (wri === 2) {
+      let storeData = JSON.parse(localStorage.getItem("chanels")!);
+      let newStore = { ...storeData, ...{ [chanel]: data } };
+      localStorage.setItem("chanels", JSON.stringify(newStore));
+      localStorage.setItem("chanel", chanel.toString());
+      setDone(0);
       setTimeout(() => {
         setDone(1);
 
@@ -98,19 +115,16 @@ const SignInPage = () => {
         }, 1000);
       }, 1000);
     }
-    
   };
   const onMode = () => {
-
     if (step !== 0) {
       if (!pre && step === 100) {
         if (data?.mode === MODEL_COUNT) {
-         
-          setData({...data!,...{mode: 0}})
-        } else setData({...data!,...{mode: data?.mode! + 1}})
+          setData({ ...data!, ...{ mode: 0 } });
+        } else setData({ ...data!, ...{ mode: data?.mode! + 1 } });
       }
       if (pre && step === 100) {
-        setData({ ...data!, watt: !data?.watt});
+        setData({ ...data!, watt: !data?.watt });
         setPre(false);
       }
     }
@@ -121,16 +135,15 @@ const SignInPage = () => {
       // View mode
       if (chanel === 0) {
         setChanel(CHANEL_COUNT);
-        if (!pre){
+        if (!pre) {
           getDataByChanel(CHANEL_COUNT);
         }
       } else {
         setChanel(chanel - 1);
-        if (!pre){
+        if (!pre) {
           getDataByChanel(chanel - 1);
         }
       }
-     
     } else {
       let stepName = STEPS[step - 1];
       let range = getRange(stepName);
@@ -145,12 +158,12 @@ const SignInPage = () => {
       // View mode
       if (chanel === CHANEL_COUNT) {
         setChanel(0);
-        if (!pre){
+        if (!pre) {
           getDataByChanel(0);
         }
       } else {
         setChanel(chanel + 1);
-        if (!pre){
+        if (!pre) {
           getDataByChanel(chanel + 1);
         }
       }
@@ -200,7 +213,7 @@ const SignInPage = () => {
         </label>
       </section>
       <section className="mainpage__mid">
-        {data  && <Sreen active={active} pre={pre}  chanel={chanel} step={step} wri={wri} data={data} done={done}/>}
+        {data && <Sreen active={active} pre={pre} chanel={chanel} step={step} wri={wri} data={data} done={done} />}
 
         <div className="mainpage__direct">
           <input type="radio" id="direct1" name="direct" />
@@ -242,6 +255,33 @@ const SignInPage = () => {
           WRI
         </label>
       </section>
+      
+      <section className="mainpage__guidline">
+        <label onClick={()=>{setModal({show: true, text: hdsdText})}}>
+          TNCT
+        </label>
+        <label onClick={()=>{setModal({show: true, text: policyText})}}>
+          TNKT
+        </label>
+      </section>
+
+      {/* Modal popup */}
+      <Modal
+          isOpen={modal.show}
+          onBackClick={() => setModal({ show: false, text: defaultContent })}
+          onKeyEcs={() => setModal({ show: false, text: defaultContent })}
+        >
+          <img
+            src={iconClose}
+            loading="lazy"
+            alt="close"
+            className="modal__iconClose"
+            onClick={() => setModal({ show: false, text: defaultContent })}
+          />
+
+          <h3 className="modal__title">{modal.text.title}</h3>
+          <div className="modal__wraper" dangerouslySetInnerHTML={{__html: modal.text.content}} />
+        </Modal>
     </div>
   );
 };

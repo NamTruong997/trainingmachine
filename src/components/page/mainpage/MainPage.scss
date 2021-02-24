@@ -87,4 +87,24 @@
       }
     }
   }
+  &__guidline{
+    position: absolute;
+    right: 1vw;
+    top: 10vh;
+    label{
+      display: block;
+      margin-bottom: 2rem;
+      opacity: 1;
+      background-color: $color-light;
+      width: 5rem;
+      font-size: 1rem;
+    }
+    @include mobile{
+      right: 1vw;
+      display: flex;
+      top: 10vh;
+      left: 1vw;
+      justify-content: center;
+    }
+  }
 }

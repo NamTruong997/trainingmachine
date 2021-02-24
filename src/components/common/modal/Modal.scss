@@ -25,14 +25,19 @@
   }
 
   &__wraper {
-    display: flex;
+   display: flex;
+   line-height: 1.25;
+   font-size: 0.85rem;
+   max-height: 65vh;
+   overflow: auto;
   }
 
   &__content {
     position: relative;
-    width: 500px;
+    width: 900px;
     max-width: 80vw;
     padding: 3rem 2rem;
+    color: black;
     background-color: $color-white;
     border-radius: 5px;
     z-index: 1;

@@ -38,11 +38,7 @@ export const policyText = {
       <p>- Thời gian điều hướng: < 5 giây</p>
       <p>- Kích thước 260mm X 80mm X 265mm</p>
       <p>- Trong lượng, 4kg (không có nguồn acqui)</p>
-      <p>- Dãi tần công tác: từ 3,0000 ~ 15,9999 MHz giản cách tần số 100 Hz</p>
-      <p>- Dãi tần công tác: từ 3,0000 ~ 15,9999 MHz giản cách tần số 100 Hz</p>
-      <p>- Dãi tần công tác: từ 3,0000 ~ 15,9999 MHz giản cách tần số 100 Hz</p>
-      <p>- Dãi tần công tác: từ 3,0000 ~ 15,9999 MHz giản cách tần số 100 Hz</p>
-
+      
       <h3>Chỉ tiêu kĩ thuật máy phát</h3>
       <p>- Công suất phát</p>
       <p>+ Chế độ P thấp 4W ÷ 7W</p>
